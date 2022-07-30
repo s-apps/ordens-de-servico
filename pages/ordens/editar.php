@@ -37,30 +37,67 @@
     $stmt->execute();
     $servicos = $stmt->fetchAll(\PDO::FETCH_OBJ);
 
+    $sql = "SELECT * FROM peca WHERE ativo = true ORDER BY nome ASC";
+    $stmt = $conexao->prepare($sql);
+    $stmt->execute();
+    $pecas = $stmt->fetchAll(\PDO::FETCH_OBJ);
+
+    $sql = "SELECT id, peca AS peca_id FROM os_peca WHERE id=" . $id;
+    $stmt = $conexao->prepare($sql);
+    $stmt->execute();
+    $os_pecas = $stmt->fetchAll(\PDO::FETCH_OBJ);
 ?>
 
 <?php include '../../layout/header.php'; ?>
 
-    <form method="POST" id="ordens">
+<form method="POST" id="ordens">
         <input type="hidden" name="ordem_id" value="<?=$ordemDeServico->id;?>" id="ordem_id">
-        <select name="cliente_id" id="cliente_id">
-            <?php foreach ($clientes as $key => $cliente) { ?>
-            <option 
-                value="<?= $cliente->id;?>" 
-                <?=$ordemDeServico->cliente_id == $cliente->id ? 'selected="selected"' : '';?>>
-                <?=$cliente->id;?> - <?=$cliente->nome;?>
-            </option>
-            <?php } ?>
-        </select>
-        <select name="servico_id" id="servico_id">
-            <?php foreach ($servicos as $key => $servico) { ?>
-            <option 
-                value="<?= $servico->id;?>" 
-                <?=$ordemDeServico->servico_id == $servico->id ? 'selected="selected"' : '';?>>
-                <?=$servico->id;?> - <?=$servico->nome;?>
-            </option>
-            <?php } ?>
-        </select>
+        <fieldset>
+            <legend>Serviço</legend>
+            <select name="cliente_id" id="cliente_id">
+                <option value="">Selecione o cliente</option>
+                <?php foreach ($clientes as $key => $cliente) { ?>
+                <option  
+                    <?= $ordemDeServico->cliente_id == $cliente->id ? 'selected="selected"' : ''; ?>
+                    value="<?= $cliente->id;?>">
+                    <?=$cliente->id;?> - <?=$cliente->nome;?>
+                </option>
+                <?php } ?>
+            </select>
+            <select name="servico_id" id="servico_id">
+                <option value="">Selecione o serviço</option>
+                <?php foreach ($servicos as $key => $servico) { ?>
+                <option 
+                    <?= $ordemDeServico->servico_id == $servico->id ? 'selected="selected"' : ''; ?>
+                    value="<?= $servico->id;?>">
+                    <?=$servico->id;?> - <?=$servico->nome;?>
+                </option>
+                <?php } ?>
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend>Peças</legend>
+            <div class="box-pecas">
+                <?php foreach ($pecas as $key => $peca) { ?>
+                    <p>
+                        <input
+                            <?php
+                                foreach ($os_pecas as $key => $os_peca) {
+                                    if($peca->id == $os_peca->peca_id) {
+                                        echo 'checked="checked"';
+                                    }
+                                }
+                            ?>
+                            type="checkbox" 
+                            name="pecas[]" 
+                            value="<?=$peca->id;?>" 
+                            id="check_<?=$peca->id;?>">
+                        <label for="check_<?=$peca->id;?>"><?=$peca->id;?> - <?=$peca->nome;?></label>
+                    </p>
+                    
+                <?php } ?>
+            </div>
+        </fieldset>
         <button type="submit">Salvar</button>
     </form>
     <div id="erro" class="erro"></div>

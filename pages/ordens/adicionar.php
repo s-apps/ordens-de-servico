@@ -50,12 +50,14 @@
         </fieldset>
         <fieldset>
             <legend>Peças</legend>
-            <ul style="list-style: none;">
-            <?php foreach ($pecas as $key => $peca) { ?>
-            <li><input type="checkbox" name="pecas[]" value="<?=$peca->id;?>" id="check_<?=$peca->id;?>">
-            <label for="check_<?=$peca->id;?>"><?=$peca->nome;?></label></li>
-            <?php } ?>
-            </ul>
+            <div class="box-pecas">
+                <?php foreach ($pecas as $key => $peca) { ?>
+                    <p>
+                        <input type="checkbox" name="pecas[]" value="<?=$peca->id;?>" id="check_<?=$peca->id;?>">
+                        <label for="check_<?=$peca->id;?>"><?=$peca->id;?> - <?=$peca->nome;?></label>
+                    </p>
+                <?php } ?>
+            </div>
         </fieldset>
         <button type="submit">Salvar</button>
     </form>

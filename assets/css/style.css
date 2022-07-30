@@ -92,7 +92,9 @@ button {
     text-align: center;
   }
 
-  .confirmacao {
-    transition: opacity 1s ease-out;
+  .box-pecas {
+    height: 150px;
+    width: 100%;
+    overflow-y: scroll;
   }
 

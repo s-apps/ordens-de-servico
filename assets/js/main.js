@@ -68,10 +68,16 @@ window.onload = function() {
             const ordem_id = document.getElementById('ordem_id') ? document.getElementById('ordem_id').value : 0;
             const cliente = document.getElementById('cliente_id').value;
             const servico = document.getElementById('servico_id').value;
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            let pecas = [];
+            for(let i = 0; i < checkboxes.length; i++){
+                pecas.push(checkboxes[i].value);
+            }
             const formData = new FormData();
             formData.append('cliente', cliente);
             formData.append('servico', servico);
             formData.append('ordem_id', ordem_id);
+            formData.append('pecas', JSON.stringify(pecas));
             const request = new XMLHttpRequest();
             request.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {

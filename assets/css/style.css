@@ -1,0 +1,79 @@
+button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 6px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: auto;
+  }
+
+  button:hover {
+    opacity: 0.8;
+  }
+
+  input[type=text], input[type=password], select {
+    width: auto;
+    padding: 5px 12px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  .erro {
+    color: #ff0000;
+  }
+
+  table.padrao {
+    table-layout: auto;
+    width: 100%;  
+  }
+
+  table {
+    border-collapse: collapse;
+    border: 1px solid black;
+  } 
+  
+  th, td {
+    border: 1px solid black;
+    padding: 5px;
+  }
+  
+  .center {
+    text-align: center;
+  }
+
+  .left {
+    text-align: left;
+  }
+
+  .acoes {
+    text-align: center;
+  }
+
+  .acoes-editar a:link, .acoes-editar a:visited {
+    background-color: #04AA6D;
+    color: white;
+    padding: 0.50rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .acoes-cancelar a:link, .acoes-cancelar a:visited {
+    background-color: red;
+    color: white;
+    padding: 0.50rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .acoes a:hover {
+    opacity: 0.8;
+  }
+
+  fieldset {
+    border:1px solid gray;
+  }

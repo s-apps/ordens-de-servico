@@ -18,7 +18,8 @@
             "INNER JOIN \n" . 
                 "servico AS serv ON oss.servico = serv.id \n" . 
             "INNER JOIN \n" . 
-                "tecnico AS tec ON oss.tecnico = tec.id";
+                "tecnico AS tec ON oss.tecnico = tec.id \n" . 
+            "WHERE oss.cancelada = false";
 
     $stmt = $conexao->prepare($sql);
     $stmt->execute();
@@ -42,7 +43,7 @@
         </thead>
         <tbody>
             <?php foreach ($ordensDeServico as $key => $ordemDeServico): ?>
-            <tr>
+            <tr id="tr_<?= $ordemDeServico->id; ?>">
                 <td><?= $ordemDeServico->id; ?></td>
                 <td><?= $ordemDeServico->tecnico; ?></td>
                 <td><?= $ordemDeServico->cliente; ?></td>
@@ -53,9 +54,23 @@
                 <td class="center acoes acoes-cancelar">
                     <a 
                         href="javascript:void(0);" 
-                        data-id="<?= $ordemDeServico->id; ?>" 
-                        onclick="cancelarOrdem(this)">Cancelar
+                        onclick="confirmaInativar(<?=$ordemDeServico->id;?>)">Cancelar
                     </a>
+                </td>
+            </tr>
+            <tr id="tr_confirmacao_<?=$ordemDeServico->id;?>" class="confirmacao">
+                <td colspan="5">
+                    <div>
+                        Cancelar ordem de serviço ID <?=$ordemDeServico->id;?> ? 
+                        <button 
+                            class="vermelho" 
+                            data-id="<?= $ordemDeServico->id; ?>" 
+                            onclick="cancelarOrdem(this)">Sim
+                        </button> | 
+                        <button 
+                            onclick="cancelaInativar(<?=$ordemDeServico->id;?>)">Não
+                        </button>
+                    </div>
                 </td>
             </tr>
             <?php endforeach ?>

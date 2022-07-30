@@ -39,10 +39,24 @@
                 <td class="center acoes acoes-cancelar">
                     <a 
                         href="javascript:void(0);" 
-                        data-id="<?= $peca->id; ?>"
-                        data-tabela="peca" 
-                        onclick="inativar(this)">Inativar
+                        onclick="confirmaInativar(<?=$peca->id;?>)">Inativar
                     </a>
+                </td>
+            </tr>
+            <tr id="tr_confirmacao_<?=$peca->id;?>" class="confirmacao">
+                <td colspan="5">
+                    <div>
+                        Inativar peça ID <?=$peca->id;?> ? 
+                        <button 
+                            class="vermelho" 
+                            data-id="<?= $peca->id; ?>" 
+                            data-tabela="peca" 
+                            onclick="inativar(this)">Sim
+                        </button> | 
+                        <button 
+                            onclick="cancelaInativar(<?=$peca->id;?>)">Não
+                        </button>
+                    </div>
                 </td>
             </tr>
             <?php endforeach ?>

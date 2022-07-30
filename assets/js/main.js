@@ -124,40 +124,49 @@ window.onload = function() {
 
 function inativar(el)
 {
-    const confirma = confirm("Confirma a inativação?");
-    if(confirma) {
-        const id = el.dataset.id;
-        const tabela = el.dataset.tabela;
-        const tr = document.getElementById('tr_' + id);
-        const formData = new FormData();
-        formData.append('id', id);
-        formData.append('tabela', tabela);
-        const request = new XMLHttpRequest();
-        request.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                tr.style.display = 'none';
-            }
-        };
-        request.open('POST', '/database/common/inativar.php');
-        request.send(formData);        
-    }
+    const id = el.dataset.id;
+    const tabela = el.dataset.tabela;
+    const tr = document.getElementById('tr_' + id);
+    const trConfirmacao = document.getElementById('tr_confirmacao_' + id);
+    const formData = new FormData();
+    formData.append('id', id);
+    formData.append('tabela', tabela);
+    const request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            tr.style.display = 'none';
+            trConfirmacao.style.display = 'none';
+        }
+    };
+    request.open('POST', '/database/common/inativar.php');
+    request.send(formData);        
+}
+
+function confirmaInativar(id) {
+    const trConfirmacao = document.getElementById('tr_confirmacao_' + id);
+    trConfirmacao.style.display = 'table-row';
+}
+
+function cancelaInativar(id)
+{
+    const trConfirmacao = document.getElementById('tr_confirmacao_' + id);
+    trConfirmacao.style.display = 'none';
 }
 
 function cancelarOrdem(el)
 {
-    const confirma = confirm("Confirma o cancelamento?");
-    if(confirma) {
-        const ordem_id = el.dataset.id;
-        const tr = document.getElementById('tr_' + ordem_id);
-        const formData = new FormData();
-        formData.append('ordem_id', ordem_id);
-        const request = new XMLHttpRequest();
-        request.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                tr.style.display = 'none';
-            }
-        };
-        request.open('POST', '/database/ordens/cancelar.php');
-        request.send(formData);        
-    }
+    const ordem_id = el.dataset.id;
+    const tr = document.getElementById('tr_' + ordem_id);
+    const trConfirmacao = document.getElementById('tr_confirmacao_' + ordem_id);
+    const formData = new FormData();
+    formData.append('ordem_id', ordem_id);
+    const request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            tr.style.display = 'none';
+            trConfirmacao.style.display = 'none';
+        }
+    };
+    request.open('POST', '/database/ordem/cancelar.php');
+    request.send(formData);        
 }

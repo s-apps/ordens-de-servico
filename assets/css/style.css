@@ -12,6 +12,14 @@ button {
     opacity: 0.8;
   }
 
+  .vermelho {
+    background-color: #ff0000;
+  }
+
+  .vermelho:hover {
+    opacity: 0.8;
+  }
+
   input[type=text], input[type=password], select {
     width: auto;
     padding: 5px 12px;
@@ -77,3 +85,14 @@ button {
   fieldset {
     border:1px solid gray;
   }
+
+  .confirmacao {
+    display: none;
+    border: none;
+    text-align: center;
+  }
+
+  .confirmacao {
+    transition: opacity 1s ease-out;
+  }
+

@@ -51,7 +51,11 @@
                     <a href="/pages/ordens/editar.php?id=<?= $ordemDeServico->id; ?>">Editar</a>
                 </td>
                 <td class="center acoes acoes-cancelar">
-                    <a href="/pages/ordens/cancelar.php?id=<?= $ordemDeServico->id; ?>">Cancelar</a>
+                    <a 
+                        href="javascript:void(0);" 
+                        data-id="<?= $ordemDeServico->id; ?>" 
+                        onclick="cancelarOrdem(this)">Cancelar
+                    </a>
                 </td>
             </tr>
             <?php endforeach ?>

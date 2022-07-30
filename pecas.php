@@ -39,8 +39,9 @@
                 <td class="center acoes acoes-cancelar">
                     <a 
                         href="javascript:void(0);" 
-                        data-id="<?= $peca->id; ?>" 
-                        onclick="inativarPeca(this)">Inativar
+                        data-id="<?= $peca->id; ?>"
+                        data-tabela="peca" 
+                        onclick="inativar(this)">Inativar
                     </a>
                 </td>
             </tr>

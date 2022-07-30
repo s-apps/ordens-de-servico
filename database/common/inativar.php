@@ -6,17 +6,18 @@
     }
 
     $erro = '';
-    $cliente_id = $_POST['cliente_id'];
+    $id = $_POST['id'];
+    $tabela = $_POST['tabela'];
     $ativo = 0;
 
-    if($cliente_id == null) {
-        $erro = $cliente_id;
+    if($id == null || $tabela == null) {
+        $erro = $id;
     } else {
         $conexao = require '../../util/connection.php';
-        $sql = "UPDATE cliente SET `ativo`=:ativo WHERE `id`=:id";
+        $sql = "UPDATE " . $tabela . " SET `ativo`=:ativo WHERE `id`=:id";
         $stmt = $conexao->prepare($sql);
         $stmt->bindParam(':ativo', $ativo);
-        $stmt->bindParam(':id', $cliente_id);
+        $stmt->bindParam(':id', $id);
         $stmt->execute();    
     }
 

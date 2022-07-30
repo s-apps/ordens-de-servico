@@ -43,7 +43,8 @@
                     <a 
                         href="javascript:void(0);" 
                         data-id="<?= $cliente->id; ?>" 
-                        onclick="inativarCliente(this)">Inativar
+                        data-tabela="cliente" 
+                        onclick="inativar(this)">Inativar
                     </a>
                 </td>
             </tr>

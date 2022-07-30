@@ -25,9 +25,9 @@ window.onload = function() {
                 }
             };
             if(servico_id) {
-                request.open('POST', '/database/servicos/update.php');
+                request.open('POST', '/database/servico/update.php');
             } else {
-                request.open('POST', '/database/servicos/adicionar.php');
+                request.open('POST', '/database/servico/adicionar.php');
             }
             request.send(formData);    
         });
@@ -53,9 +53,9 @@ window.onload = function() {
                 }
             };
             if(cliente_id) {
-                request.open('POST', '/database/clientes/update.php');
+                request.open('POST', '/database/cliente/update.php');
             } else {
-                request.open('POST', '/database/clientes/adicionar.php');
+                request.open('POST', '/database/cliente/adicionar.php');
             }
             request.send(formData);    
         });
@@ -83,9 +83,9 @@ window.onload = function() {
                 }
             };
             if(ordem_id) {
-                request.open('POST', '/database/ordens/update.php');
+                request.open('POST', '/database/ordem/update.php');
             } else {
-                request.open('POST', '/database/ordens/adicionar.php');
+                request.open('POST', '/database/ordem/adicionar.php');
             }
             request.send(formData);    
         });
@@ -113,70 +113,51 @@ window.onload = function() {
                 }
             };
             if(peca_id) {
-                request.open('POST', '/database/pecas/update.php');
+                request.open('POST', '/database/peca/update.php');
             } else {
-                request.open('POST', '/database/pecas/adicionar.php');
+                request.open('POST', '/database/peca/adicionar.php');
             }
             request.send(formData);    
         });
     }
 };
 
-
-function inativarCliente(el)
+function inativar(el)
 {
     const confirma = confirm("Confirma a inativação?");
     if(confirma) {
-        const cliente_id = el.dataset.id;
-        const tr = document.getElementById('tr_' + cliente_id);
+        const id = el.dataset.id;
+        const tabela = el.dataset.tabela;
+        const tr = document.getElementById('tr_' + id);
         const formData = new FormData();
-        formData.append('cliente_id', cliente_id);
+        formData.append('id', id);
+        formData.append('tabela', tabela);
         const request = new XMLHttpRequest();
         request.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 tr.style.display = 'none';
             }
         };
-        request.open('POST', '/database/clientes/inativar.php');
+        request.open('POST', '/database/common/inativar.php');
         request.send(formData);        
     }
 }
 
-function inativarPeca(el)
+function cancelarOrdem(el)
 {
-    const confirma = confirm("Confirma a inativação?");
+    const confirma = confirm("Confirma o cancelamento?");
     if(confirma) {
-        const peca_id = el.dataset.id;
-        const tr = document.getElementById('tr_' + peca_id);
+        const ordem_id = el.dataset.id;
+        const tr = document.getElementById('tr_' + ordem_id);
         const formData = new FormData();
-        formData.append('peca_id', peca_id);
+        formData.append('ordem_id', ordem_id);
         const request = new XMLHttpRequest();
         request.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 tr.style.display = 'none';
             }
         };
-        request.open('POST', '/database/pecas/inativar.php');
+        request.open('POST', '/database/ordens/cancelar.php');
         request.send(formData);        
     }
 }
-
-function inativarServico(el)
-{
-    const confirma = confirm("Confirma a inativação?");
-    if(confirma) {
-        const servico_id = el.dataset.id;
-        const tr = document.getElementById('tr_' + servico_id);
-        const formData = new FormData();
-        formData.append('servico_id', servico_id);
-        const request = new XMLHttpRequest();
-        request.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                tr.style.display = 'none';
-            }
-        };
-        request.open('POST', '/database/servicos/inativar.php');
-        request.send(formData);        
-    }
-}
-

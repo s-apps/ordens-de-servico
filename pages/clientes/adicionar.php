@@ -15,6 +15,7 @@
         </div>
 
         <form method="POST" id="clientes">
+            <label for="nome">Nome:</label>
             <input type="text" name="nome" placeholder="nome" id="nome">
             <button type="submit">Salvar</button>
             <a href="/clientes.php" class="btn-cancelar">Cancelar</a>

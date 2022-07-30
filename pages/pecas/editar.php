@@ -31,7 +31,9 @@
 
         <form method="POST" id="pecas">
             <input type="hidden" name="peca_id" value="<?=$peca->id;?>" id="peca_id">
+            <label for="nome">Nome:</label>
             <input type="text" name="nome" placeholder="nome" id="nome" value="<?= $peca->nome; ?>">
+            <label for="referencia">Referência:</label>
             <input type="text" name="referencia" placeholder="referência" id="referencia" value="<?= $peca->referencia; ?>">
             <button type="submit">Salvar</button>
             <a href="/pecas.php" class="btn-cancelar">Cancelar</a>

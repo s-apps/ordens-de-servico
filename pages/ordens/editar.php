@@ -60,6 +60,7 @@
             <input type="hidden" name="ordem_id" value="<?=$ordemDeServico->id;?>" id="ordem_id">
             <fieldset>
                 <legend>Serviço</legend>
+                <label for="cliente_id">Cliente:</label>
                 <select name="cliente_id" id="cliente_id">
                     <option value="">Selecione o cliente</option>
                     <?php foreach ($clientes as $key => $cliente) { ?>
@@ -70,6 +71,7 @@
                     </option>
                     <?php } ?>
                 </select>
+                <label for="servico_id">Serviço:</label>
                 <select name="servico_id" id="servico_id">
                     <option value="">Selecione o serviço</option>
                     <?php foreach ($servicos as $key => $servico) { ?>
@@ -81,6 +83,7 @@
                     <?php } ?>
                 </select>
             </fieldset>
+            &nbsp;&nbsp;
             <fieldset>
                 <legend>Peças</legend>
                 <div class="box-pecas">

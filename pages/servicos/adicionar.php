@@ -15,7 +15,9 @@
         </div>
         
         <form method="POST" id="servicos">
+            <label for="nome">Nome:</label>
             <input type="text" name="nome" placeholder="nome do serviço" id="nome">
+            <label for="referencia">Referência:</label>
             <input type="text" name="referencia" placeholder="referência" id="referencia">
             <button type="submit">Salvar</button>
             <a href="/servicos.php" class="btn-cancelar">Cancelar</a>

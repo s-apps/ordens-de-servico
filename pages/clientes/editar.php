@@ -31,6 +31,7 @@
 
         <form method="POST" id="clientes">
             <input type="hidden" name="cliente_id" value="<?=$cliente->id;?>" id="cliente_id">
+            <label for="nome">Nome:</label>
             <input type="text" name="nome" placeholder="nome" id="nome" value="<?= $cliente->nome; ?>">
             <button type="submit">Salvar</button>
             <a href="/clientes.php" class="btn-cancelar">Cancelar</a>

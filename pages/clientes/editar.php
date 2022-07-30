@@ -23,11 +23,19 @@
 
 <?php include '../../layout/header.php'; ?>
 
-    <form method="POST" id="clientes">
-        <input type="hidden" name="cliente_id" value="<?=$cliente->id;?>" id="cliente_id">
-        <input type="text" name="nome" placeholder="nome" id="nome" value="<?= $cliente->nome; ?>">
-        <button type="submit">Salvar</button>
-    </form>
-    <div id="erro" class="erro"></div>
+    <div class="container">
+        <div class="box-titulo borda-bottom">
+            <div><h1>Clientes / editar</h1></div>
+            <div>Olá, <?= $_SESSION['nome_do_tecnico']; ?> | <a href="/auth/logout.php">SAIR</a></div>
+        </div>
+
+        <form method="POST" id="clientes">
+            <input type="hidden" name="cliente_id" value="<?=$cliente->id;?>" id="cliente_id">
+            <input type="text" name="nome" placeholder="nome" id="nome" value="<?= $cliente->nome; ?>">
+            <button type="submit">Salvar</button>
+            <a href="/clientes.php" class="btn-cancelar">Cancelar</a>
+        </form>
+        <div id="erro" class="erro"></div>
+    </div>
 
 <?php include '../../layout/footer.php'; ?>

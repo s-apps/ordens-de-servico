@@ -1,3 +1,14 @@
+body {
+  background-color: #f4f6f9;
+  margin: 30px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  padding: 20px 50px 50px 50px;
+  background-color: #fff;
+}
+
 button {
     background-color: #04AA6D;
     color: white;
@@ -98,3 +109,78 @@ button {
     overflow-y: scroll;
   }
 
+  .box-login {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border: solid 1px #ededed;
+    padding: 20px;
+    background-color: #fff;
+  } 
+
+  .box-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .borda-bottom {
+    border-bottom: solid 1px #ededed;
+  }
+
+  a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+  }
+
+  .btn-adicionar {
+    background-color: #0d6efd;
+    color: #fff;
+    padding: 10px;
+  }
+
+  .btn-adicionar:hover {
+    opacity: 0.8;
+  }
+
+  .btn-cancelar {
+    background-color: #ededed;
+    color: #000;
+    padding: 5px;
+    border: none;
+    font-size: 14px;
+  }
+
+  .btn-cancelar:hover {
+    opacity: 0.8;
+  }
+
+  .menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+  }
+  
+  .menu li {
+    float: left;
+  }
+  
+  .menu li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+  }
+  
+  .menu li a:hover {
+    background-color: #0d6efd;
+  }
+
+  li a.active {
+    background-color: #0d6efd;
+  }

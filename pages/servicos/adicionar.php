@@ -8,13 +8,19 @@
 
 <?php include '../../layout/header.php'; ?>
 
-    <h1>Ordem de Serviços - Servicos - Adicionar</h1>
-
-    <form method="POST" id="servicos">
-        <input type="text" name="nome" placeholder="nome" id="nome">
-        <input type="text" name="referencia" placeholder="referência" id="referencia">
-        <button type="submit">Salvar</button>
-    </form>
-    <div id="erro" class="erro"></div>
+    <div class="container">
+        <div class="box-titulo borda-bottom">
+            <div><h1>Serviços / adicionar</h1></div>
+            <div>Olá, <?= $_SESSION['nome_do_tecnico']; ?> | <a href="/auth/logout.php">SAIR</a></div>
+        </div>
+        
+        <form method="POST" id="servicos">
+            <input type="text" name="nome" placeholder="nome do serviço" id="nome">
+            <input type="text" name="referencia" placeholder="referência" id="referencia">
+            <button type="submit">Salvar</button>
+            <a href="/servicos.php" class="btn-cancelar">Cancelar</a>
+        </form>
+        <div id="erro" class="erro"></div>
+    </div>
 
 <?php include '../../layout/footer.php'; ?>

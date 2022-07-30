@@ -8,12 +8,18 @@
 
 <?php include '../../layout/header.php'; ?>
 
-    <h1>Ordem de Serviços - Clientes - Adicionar</h1>
+    <div class="container">
+        <div class="box-titulo borda-bottom">
+            <div><h1>Clientes / adicionar</h1></div>
+            <div>Olá, <?= $_SESSION['nome_do_tecnico']; ?> | <a href="/auth/logout.php">SAIR</a></div>
+        </div>
 
-    <form method="POST" id="clientes">
-        <input type="text" name="nome" placeholder="nome" id="nome">
-        <button type="submit">Salvar</button>
-    </form>
-    <div id="erro" class="erro"></div>
+        <form method="POST" id="clientes">
+            <input type="text" name="nome" placeholder="nome" id="nome">
+            <button type="submit">Salvar</button>
+            <a href="/clientes.php" class="btn-cancelar">Cancelar</a>
+        </form>
+        <div id="erro" class="erro"></div>
+    </div>
 
 <?php include '../../layout/footer.php'; ?>

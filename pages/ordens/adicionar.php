@@ -17,7 +17,7 @@
     $stmt->execute();
     $servicos = $stmt->fetchAll(\PDO::FETCH_OBJ);
 
-    $sql = "SELECT * FROM peca ORDER BY nome ASC";
+    $sql = "SELECT * FROM peca WHERE ativo = true ORDER BY nome ASC";
     $stmt = $conexao->prepare($sql);
     $stmt->execute();
     $pecas = $stmt->fetchAll(\PDO::FETCH_OBJ);

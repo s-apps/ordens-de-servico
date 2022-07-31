@@ -118,9 +118,6 @@ CREATE TABLE IF NOT EXISTS `os_peca` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-INSERT INTO `tecnico` (`login`, `senha`, `nome`) VALUES ('tecnico1', '81dc9bdb52d04dc20036dbd8313ed055', 'Técnico 1');
-INSERT INTO `tecnico` (`login`, `senha`, `nome`) VALUES ('tecnico2', '81dc9bdb52d04dc20036dbd8313ed055', 'Técnico 2');
-
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

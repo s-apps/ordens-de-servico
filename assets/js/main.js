@@ -176,3 +176,7 @@ function cancelarOrdem(el)
     request.open('POST', '/database/ordem/cancelar.php');
     request.send(formData);        
 }
+
+function relatorio(id) {
+    window.open(`/pages/ordens/relatorio.php?ordem_id=${id}`);
+}

@@ -51,7 +51,7 @@
                     <th class="left">TÉCNICO</th>
                     <th class="left">CLIENTE</th>
                     <th class="left">SERVIÇO</th>
-                    <th colspan="2" class="center" style="width: 15%;">AÇÕES</th>
+                    <th colspan="3" class="center" style="width: 15%;">AÇÕES</th>
                 </tr>
             </thead>
             <tbody>
@@ -70,6 +70,13 @@
                             onclick="confirmaInativar(<?=$ordemDeServico->id;?>)">Cancelar
                         </a>
                     </td>
+                    <td class="center">
+                        <a 
+                            href="javascript:void(0);" 
+                            onclick="relatorio(<?=$ordemDeServico->id;?>)">
+                            <img src="assets/img/report.png" style="height: 24px; width: auto;" alt="relatório">
+                        </a>
+                    </td>                        
                 </tr>
                 <tr id="tr_confirmacao_<?=$ordemDeServico->id;?>" class="confirmacao">
                     <td colspan="6" style="background-color: #ededed;">

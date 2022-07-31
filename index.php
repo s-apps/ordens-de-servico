@@ -44,7 +44,13 @@
             </div>
             <div><a href="/pages/ordens/adicionar.php" class="btn-adicionar">Adicionar Ordem de Serviço</a></div>
         </div>
-        <table class="padrao">
+
+        <div class="box-filtro">
+            <input type="text" name="filtro" id="filtro" placeholder="Filtrar por ID, TÉCNICO, CLIENTE ou SERVIÇO" class="input-filtro">
+            <button type="button" id="btn-limpar-filtro">Limpar Filtro</button>
+        </div>
+            
+        <table class="padrao" id="tab-ordens-servico">
             <thead>
                 <tr>
                     <th class="left">ID</th>
@@ -79,7 +85,7 @@
                     </td>                        
                 </tr>
                 <tr id="tr_confirmacao_<?=$ordemDeServico->id;?>" class="confirmacao">
-                    <td colspan="6" style="background-color: #ededed;">
+                    <td colspan="7" style="background-color: #ededed;">
                         <div>
                             Cancelar ordem de serviço ID <?=$ordemDeServico->id;?> ? 
                             <button 

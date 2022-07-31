@@ -169,8 +169,8 @@ function cancelarOrdem(el)
     const request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            tr.style.display = 'none';
-            trConfirmacao.style.display = 'none';
+            tr.remove();
+            trConfirmacao.remove();
         }
     };
     request.open('POST', '/database/ordem/cancelar.php');
@@ -179,4 +179,55 @@ function cancelarOrdem(el)
 
 function relatorio(id) {
     window.open(`/pages/ordens/relatorio.php?ordem_id=${id}`);
+}
+
+if(!!document.getElementById('filtro')){
+    const filtro = document.getElementById('filtro');
+    const btnLimparFiltro = document.getElementById('btn-limpar-filtro');
+
+    btnLimparFiltro.addEventListener('click', () => {
+        filtro.value = '';
+        tabela = document.getElementById('tab-ordens-servico');
+        tr = tabela.getElementsByTagName('tr');
+        for(i = 0; i < tr.length; i++){
+            if(i % 2 != 0){
+                
+                    tr[i].style.display = '';
+               
+            }
+        }
+    });
+
+    filtro.addEventListener('keyup', (e) => {
+        e.preventDefault();
+        const query = e.target.value.toUpperCase();
+        let naoEsconderEstes = []
+        let tabela, tr, td, i, t;
+        tabela = document.getElementById('tab-ordens-servico');
+        tr = tabela.getElementsByTagName('tr');
+
+        for(i = 0; i < tr.length; i++){
+            if(i % 2 != 0){
+                td = tr[i].getElementsByTagName('td');
+                for(t = 0; t < td.length - 3; t++){
+                    texto = td[t].textContent || td[t].innerText;
+                    if(texto.toUpperCase().indexOf(query) > -1){
+                        if(!naoEsconderEstes.includes(tr[i].id)){
+                            naoEsconderEstes.push(tr[i].id)
+                        } 
+                    }
+                }
+            }
+        }
+
+        for(i = 0; i < tr.length; i++){
+            if(i % 2 != 0){
+                if(!naoEsconderEstes.includes(tr[i].id)){
+                    tr[i].style.display = 'none';
+                }else{
+                    tr[i].style.display = '';
+                }
+            }
+        }
+    });
 }
